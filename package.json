@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-  "start": "node app.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "http": "0.0.0",
+    "method-override": "^2.3.9",
     "newsapi": "^2.0.1"
   }
 }

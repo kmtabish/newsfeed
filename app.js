@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const app = express();
 const db = require('./db/dbConnect')
-
+var path = require('path');
 //require mongoose node module
 
 const PORT = process.env.PORT || 1111;
@@ -14,8 +15,10 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
-// app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUTapp.use(express.static(__dirname + '/public'));
+app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUTapp.use(express.static(__dirname + '/public'));
 require('./routes/routes')(app);;
 
 app.listen(PORT, () => {
