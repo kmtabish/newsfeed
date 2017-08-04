@@ -8,5 +8,7 @@ module.exports = function(app) {
   app.get('/getNews',news.getNews);
   app.get('/removeTopNews',news.removeTopNews);
   app.post('/pushBookmarkNews',news.pushBookmarkNews);
+  app.get('/getBookmarkNews',news.getBookmarkNews);
+
 
 }
