@@ -36,11 +36,12 @@ module.exports = {
     });
   },
   pushBookmarkNews:function(req, res){
-    dbc.collection("bookmarknews").insert(articlesResponse.articles, function(err, result) {
-         if (err) throw err;
-         console.log("Many record inserted");
-         res.send("DATA INSERTED....");
-       });
+    console.log(":::::", req.body)
+    // dbc.collection("bookmarknews").insertOne(req.body, function(err, result) {
+    //      if (err) throw err;
+    //      console.log("Bookmarked data inserted");
+    //      res.send("DATA BookMarked....");
+    //    });
   },
   removeTopNews:function(req, res) {
     dbc.collection('topnews', {}, function(err, contacts) {
