@@ -6,5 +6,7 @@ var path = require('path');
 module.exports = function(app) {
   app.get('/pushNews',news.pushNews);
   app.get('/getNews',news.getNews);
+  app.get('/removeTopNews',news.removeTopNews);
+  app.post('/pushBookmarkNews',news.pushBookmarkNews);
 
 }
