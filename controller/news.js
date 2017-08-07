@@ -58,14 +58,18 @@ module.exports = {
     dbc.collection("topnews").find({}).toArray(function(err, result) {
       if (err)
         throw err;
-      res.send(result);
+      res.send(result).sort({
+        publishedAt: -1
+      });
     });
   },
   getBookmarkNews: function(req, res) {
     dbc.collection("bookmarknews").find({}).toArray(function(err, result) {
       if (err)
         throw err;
-      res.send(result);
+      res.send(result).sort({
+        publishedAt: -1
+      });
     });
   },
   pushBookmarkNews: function(req, res) {
