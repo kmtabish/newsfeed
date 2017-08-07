@@ -55,21 +55,21 @@ module.exports = {
     });
   },
   getNews: function(req, res) {
-    dbc.collection("topnews").find({}).toArray(function(err, result) {
+    dbc.collection("topnews").find({}).sort({
+      publishedAt: -1
+    }).toArray(function(err, result) {
       if (err)
         throw err;
-      res.send(result).sort({
-        publishedAt: -1
-      });
+      res.send(result)
     });
   },
   getBookmarkNews: function(req, res) {
-    dbc.collection("bookmarknews").find({}).toArray(function(err, result) {
+    dbc.collection("bookmarknews").find({}).sort({
+      publishedAt: -1
+    }).toArray(function(err, result) {
       if (err)
         throw err;
-      res.send(result).sort({
-        publishedAt: -1
-      });
+      res.send(result)
     });
   },
   pushBookmarkNews: function(req, res) {
