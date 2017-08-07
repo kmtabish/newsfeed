@@ -22,7 +22,8 @@ module.exports = {
       //       console.log("Many record inserted");
       //       res.send("DATA INSERTED....");
       //     });
-      articlesResponse.articles.map(function(data) {
+      var count = 0;
+      articlesResponse.articles.map(function(data, index) {
         return dbc.collection("topnews").update({
           title: data.title
         }, {
@@ -36,12 +37,21 @@ module.exports = {
         }, {
           upsert: true
         }, function(err, result) {
-          if (err)
-            throw err;
-          console.log("News data inserted");
-          res.end();
+          if (err) {
+            return res.send(err);
+          } else {
+            count = count + 1;
+            console.log("News data inserted", count, articlesResponse.articles.length);
+            if (count == articlesResponse.articles.length) {
+              res.json(result);
+            }
+          }
+
         })
+
+
       });
+
     });
   },
   getNews: function(req, res) {
