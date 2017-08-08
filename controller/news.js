@@ -64,7 +64,9 @@ module.exports = {
     });
   },
   getBookmarkNews: function(req, res) {
-    dbc.collection("bookmarknews").find({}).sort({
+    dbc.collection("bookmarknews").find({
+      userId: req.query.email
+    }).sort({
       publishedAt: -1
     }).toArray(function(err, result) {
       if (err)
